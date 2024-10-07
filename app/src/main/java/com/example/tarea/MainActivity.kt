@@ -33,9 +33,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SaveTextToFile("hola.txt")
+            SaveUserPassFile("user.txt","pepe","1234")
         }
-
-
 
 
     }
@@ -65,7 +64,32 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text("Leer Archivo")
             }
+
         }
+    }
+    @Composable
+    fun SaveUserPassFile(nombreArchivo: String, user : String, pass: String) {
+        val myContext = LocalContext.current
+        Column(
+            //modifier = Modifier.fillMaxSize(),
+            //horizontalAlignment = Layout.Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = { WriteReadUserPass.saveUserPassFile(myContext, nombreArchivo, user, pass, ) }
+            ) {
+                Text("Guardar usuario")
+            }
+            Button(
+                onClick = {WriteReadUserPass.readUserPasswordFile(myContext, nombreArchivo)}
+            ) {
+                Text("Leer Usuarios")
+            }
+
+        }
+
+
+
     }
 
 }

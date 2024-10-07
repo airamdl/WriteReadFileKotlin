@@ -36,7 +36,7 @@ class WriteReadFile{
             }
         }
 
-        fun leerTexto(context : Context,nombreArchivo: String) {
+        fun leerTexto(context : Context, nombreArchivo: String) {
             try {
                 val directorio = context.filesDir
                 val archivo = File(directorio, nombreArchivo)
