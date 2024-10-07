@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 
 
 import java.io.File //https://developer.android.com/reference/java/io/File.html
@@ -22,6 +23,10 @@ import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import java.lang.reflect.Modifier
 import java.time.LocalDateTime
+import com.example.tarea.ui.theme.TareaTheme
+import com.example.tarea.WriteReadFile.*
+
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +88,7 @@ class MainActivity : ComponentActivity() {
         } else {
             TODO("VERSION.SDK_INT < O")
         }
+        val myContext = LocalContext.current
 
         Column(
             //modifier = Modifier.fillMaxSize(),
@@ -90,7 +96,7 @@ class MainActivity : ComponentActivity() {
             verticalArrangement = Arrangement.Center
         ) {
             Button(
-                onClick = { guardarTextoEnArchivo(datetime, nombreArchivo) }
+                onClick = { WriteReadFile.guardarTextoEnArchivo(myContext, datetime, nombreArchivo) }
             ) {
                 Text("Guardar archivo")
             }
