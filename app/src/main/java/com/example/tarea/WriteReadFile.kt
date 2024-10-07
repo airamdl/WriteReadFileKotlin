@@ -35,5 +35,19 @@ class WriteReadFile{
                 return "No se pudo acceder al almacenamiento externo"
             }
         }
+
+        fun leerTexto(context : Context,nombreArchivo: String) {
+            try {
+                val directorio = context.filesDir
+                val archivo = File(directorio, nombreArchivo)
+
+
+                val texto = archivo.readText()
+                Log.i("DAM1", "Texto leído: $texto")
+            } catch (e: Exception) {
+                e.printStackTrace()
+                Log.i("DAM1", "Error al leer el archivo")
+            }
+        }
     }
 }
